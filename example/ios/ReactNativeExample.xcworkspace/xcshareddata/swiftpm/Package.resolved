@@ -1,0 +1,15 @@
+{
+  "originHash" : "82fd6a08d273fbca8fa7d537d7db8e506e3713f5907117cbffbf8188262bb44d",
+  "pins" : [
+    {
+      "identity" : "karadesk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/KaraDesk/karadesk-ios",
+      "state" : {
+        "revision" : "799bedae1cffb9f4b8f550e4552760fabddaf6e4",
+        "version" : "1.1.1"
+      }
+    }
+  ],
+  "version" : 3
+}
