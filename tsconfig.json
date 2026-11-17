@@ -2,14 +2,14 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@karadesk/karadesk-react-native": ["./src/index"]
+      "@karadesk/karadesk-react-native": ["./src/index"],
+      "react-native/Libraries/Types/CodegenTypes": [
+        "./node_modules/react-native/types_generated/Libraries/Types/CodegenTypes.d.ts"
+      ]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "customConditions": [
-      "karadesk-react-native-source",
-      "react-native-strict-api"
-    ],
+    "customConditions": ["karadesk-react-native-source"],
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react-jsx",

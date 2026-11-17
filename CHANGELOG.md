@@ -2,6 +2,10 @@
 
 All notable changes to the KaraDesk React Native package are documented here. This project follows [Semantic Versioning](https://semver.org).
 
+## 1.0.1
+
+- Works with React Native 0.76 or later. Version 1.0.0 needed React Native 0.80.
+
 ## 1.0.0
 
 - First release. Brings the KaraDesk messenger to React Native apps by bridging the KaraDesk iOS SDK (1.1.1 or later) and Android SDK (1.1.1).

@@ -4,7 +4,7 @@ The KaraDesk messenger for React Native. This package bridges the native [KaraDe
 
 ## Requirements
 
-- React Native 0.80 or later, with the New Architecture (the default since 0.76)
+- React Native 0.76 or later, with the New Architecture (the default since 0.76)
 - iOS 17 or later
 - Android 8.0 (API 26) or later
 - Expo: works in development builds and with `expo prebuild`. It doesn't run in Expo Go, because it includes native code.

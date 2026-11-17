@@ -1,8 +1,9 @@
-import {
-  TurboModuleRegistry,
-  type CodegenTypes,
-  type TurboModule,
-} from 'react-native';
+import { TurboModuleRegistry, type TurboModule } from 'react-native';
+import type {
+  Double,
+  EventEmitter,
+  UnsafeObject,
+} from 'react-native/Libraries/Types/CodegenTypes';
 
 export type NativeUser = {
   id?: string;
@@ -10,13 +11,13 @@ export type NativeUser = {
   name?: string;
   phone?: string;
   avatarUrl?: string;
-  signedUpAt?: CodegenTypes.Double;
+  signedUpAt?: Double;
   userHash?: string;
 };
 
 export type NativeDestination = {
   type: string;
-  id?: CodegenTypes.Double;
+  id?: Double;
   message?: string;
 };
 
@@ -32,14 +33,14 @@ export interface Spec extends TurboModule {
   present(destination: NativeDestination, style: string): void;
   dismiss(): void;
   isPresented(): Promise<boolean>;
-  getUnreadConversationCount(): Promise<CodegenTypes.Double>;
+  getUnreadConversationCount(): Promise<Double>;
   setShowsInAppMessages(enabled: boolean): void;
   setOpensConversationsFromNotifications(enabled: boolean): void;
   setDeviceToken(token: string): void;
-  isKaraDeskPush(data: CodegenTypes.UnsafeObject): boolean;
-  handlePush(data: CodegenTypes.UnsafeObject): Promise<boolean>;
+  isKaraDeskPush(data: UnsafeObject): boolean;
+  handlePush(data: UnsafeObject): Promise<boolean>;
   getVersion(): string;
-  readonly onUnreadConversationCountChange: CodegenTypes.EventEmitter<UnreadCountEvent>;
+  readonly onUnreadConversationCountChange: EventEmitter<UnreadCountEvent>;
 }
 
 export default TurboModuleRegistry.getEnforcing<Spec>('KaraDeskModule');
