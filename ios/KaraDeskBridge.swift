@@ -117,6 +117,29 @@ public final class KaraDeskBridge: NSObject {
         KaraDesk.handlePush(data)
     }
 
+    @objc public static func trackEvent(_ name: String, metadata: [String: Any]) {
+        KaraDesk.trackEvent(name, metadata: metadata.compactMapValues(eventValue))
+    }
+
+    private static func eventValue(_ value: Any) -> KaraDesk.EventValue? {
+        switch value {
+        case is NSNull:
+            return .null
+        case let number as NSNumber where CFGetTypeID(number) == CFBooleanGetTypeID():
+            return .bool(number.boolValue)
+        case let number as NSNumber:
+            return .number(number.doubleValue)
+        case let string as String:
+            return .string(string)
+        case let array as [Any]:
+            return .array(array.compactMap(eventValue))
+        case let object as [String: Any]:
+            return .object(object.compactMapValues(eventValue))
+        default:
+            return nil
+        }
+    }
+
     @objc public nonisolated static var sdkVersion: String {
         KaraDesk.version
     }

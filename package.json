@@ -1,6 +1,6 @@
 {
   "name": "@karadesk/karadesk-react-native",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "React Native bridge to the KaraDesk iOS and Android SDKs",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",

@@ -39,6 +39,7 @@ export interface Spec extends TurboModule {
   setDeviceToken(token: string): void;
   isKaraDeskPush(data: UnsafeObject): boolean;
   handlePush(data: UnsafeObject): Promise<boolean>;
+  trackEvent(name: string, metadata: UnsafeObject): void;
   getVersion(): string;
   readonly onUnreadConversationCountChange: EventEmitter<UnreadCountEvent>;
 }

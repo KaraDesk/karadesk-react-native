@@ -142,6 +142,11 @@ static NSDictionary *KDUserDictionary(NativeUser &user)
   resolve(@([KaraDeskBridge handlePush:data]));
 }
 
+- (void)trackEvent:(NSString *)name metadata:(NSDictionary *)metadata
+{
+  [KaraDeskBridge trackEvent:name metadata:metadata];
+}
+
 - (NSString *)getVersion
 {
   return KaraDeskBridge.sdkVersion;

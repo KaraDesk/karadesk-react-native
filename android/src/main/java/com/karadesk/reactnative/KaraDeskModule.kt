@@ -102,6 +102,10 @@ class KaraDeskModule(reactContext: ReactApplicationContext) : NativeKaraDeskModu
     KaraDesk.opensConversationsFromNotifications = enabled
   }
 
+  override fun trackEvent(name: String, metadata: ReadableMap) {
+    KaraDesk.trackEvent(name, metadata.toHashMap())
+  }
+
   override fun setDeviceToken(token: String) {
     KaraDesk.setDeviceToken(token)
   }

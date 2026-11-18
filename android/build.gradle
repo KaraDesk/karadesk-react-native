@@ -1,7 +1,7 @@
 ext.KaraDeskReactNative = [
   minSdkVersion: 26,
   compileSdkVersion: 36,
-  karadeskAndroidVersion: "1.1.1"
+  karadeskAndroidVersion: "1.2.0"
 ]
 
 ext.getExtOrDefault = { prop ->

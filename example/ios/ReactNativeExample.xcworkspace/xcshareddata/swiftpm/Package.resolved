@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/KaraDesk/karadesk-ios",
       "state" : {
-        "revision" : "799bedae1cffb9f4b8f550e4552760fabddaf6e4",
-        "version" : "1.1.1"
+        "revision" : "1835a599fa827ea4411a4a35829538ecb8496fa2",
+        "version" : "1.2.0"
       }
     }
   ],

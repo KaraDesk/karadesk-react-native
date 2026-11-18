@@ -2,6 +2,11 @@
 
 All notable changes to the KaraDesk React Native package are documented here. This project follows [Semantic Versioning](https://semver.org).
 
+## 1.2.0
+
+- Track what people do in your app with `KaraDesk.trackEvent(name, metadata)`, for example `KaraDesk.trackEvent('Placed order', { total: 49.99, items: [{ sku: 'A-100', quantity: 2 }] })`. Metadata can hold text, numbers, booleans, null, dates, arrays and objects. The native iOS and Android SDKs save events on the device and send them in batches, including events tracked offline once the connection comes back.
+- Requires KaraDesk iOS SDK 1.2.0 and Android SDK 1.2.0, which `pod install` and Gradle pick up automatically.
+
 ## 1.0.1
 
 - Works with React Native 0.76 or later. Version 1.0.0 needed React Native 0.80.

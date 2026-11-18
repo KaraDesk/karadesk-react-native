@@ -41,3 +41,14 @@ export type KaraDeskErrorCode =
 
 /** Errors from `login` and `updateUser` carry one of these codes in `error.code`. */
 export type KaraDeskError = Error & { code: KaraDeskErrorCode };
+
+export type EventValue =
+  | string
+  | number
+  | boolean
+  | null
+  | Date
+  | EventValue[]
+  | { [key: string]: EventValue };
+
+export type EventMetadata = Record<string, EventValue>;

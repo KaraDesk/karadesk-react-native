@@ -2,10 +2,72 @@ import { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 
 import NativeKaraDesk, { type NativeUser } from './NativeKaraDeskModule';
-import type { Destination, PresentationStyle, User } from './types';
+import type {
+  Destination,
+  EventMetadata,
+  EventValue,
+  PresentationStyle,
+  User,
+} from './types';
+
+type CleanValue =
+  | string
+  | number
+  | boolean
+  | null
+  | CleanValue[]
+  | { [key: string]: CleanValue };
+
+function cleanValue(value: EventValue): CleanValue | undefined {
+  if (value instanceof Date) {
+    return value.toISOString();
+  }
+
+  if (
+    value === null ||
+    typeof value === 'string' ||
+    typeof value === 'boolean'
+  ) {
+    return value;
+  }
+
+  if (typeof value === 'number') {
+    return Number.isFinite(value) ? value : null;
+  }
+
+  if (Array.isArray(value)) {
+    return value
+      .map(cleanValue)
+      .filter((item): item is CleanValue => item !== undefined);
+  }
+
+  if (typeof value === 'object') {
+    return cleanMetadata(value);
+  }
+
+  return undefined;
+}
+
+function cleanMetadata(metadata: EventMetadata): {
+  [key: string]: CleanValue;
+} {
+  const clean: { [key: string]: CleanValue } = {};
+
+  Object.entries(metadata).forEach(([key, value]) => {
+    const converted = cleanValue(value);
+
+    if (converted !== undefined) {
+      clean[key] = converted;
+    }
+  });
+
+  return clean;
+}
 
 export type {
   Destination,
+  EventMetadata,
+  EventValue,
   KaraDeskError,
   KaraDeskErrorCode,
   PresentationStyle,
@@ -152,6 +214,18 @@ const KaraDesk = {
    */
   handlePush(data: Record<string, unknown>): Promise<boolean> {
     return NativeKaraDesk.handlePush(data);
+  },
+
+  /**
+   * Records something the user did in your app, like "Created project" or "Upgraded plan".
+   *
+   * Events show on the person's profile in KaraDesk with how many times they did it and when.
+   * The native SDK saves them on the device and sends them in batches, including events tracked
+   * while offline once the connection comes back. Metadata can hold text, numbers, booleans,
+   * null, dates, arrays and objects.
+   */
+  trackEvent(name: string, metadata: EventMetadata = {}): void {
+    NativeKaraDesk.trackEvent(name, cleanMetadata(metadata));
   },
 
   /** The version of the native KaraDesk SDK. */

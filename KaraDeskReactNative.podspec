@@ -1,7 +1,7 @@
 require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
-karadesk_ios_version = "1.1.1"
+karadesk_ios_version = "1.2.0"
 
 Pod::Spec.new do |s|
   s.name         = "KaraDeskReactNative"
